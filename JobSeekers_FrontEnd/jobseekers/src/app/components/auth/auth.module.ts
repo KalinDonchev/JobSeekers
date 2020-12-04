@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
     MatCardModule,
     MatInputModule
   ],
+  providers: [],
   exports: [RegisterComponent, LoginComponent]
 })
 export class AuthModule { }

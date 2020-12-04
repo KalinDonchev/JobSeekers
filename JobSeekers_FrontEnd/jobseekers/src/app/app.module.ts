@@ -7,12 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OfferModule } from './components/offer/offer.module';
-
+import { HomeComponent } from './components/home/home.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    HomeComponent,
     ],
   imports: [
     BrowserModule,
