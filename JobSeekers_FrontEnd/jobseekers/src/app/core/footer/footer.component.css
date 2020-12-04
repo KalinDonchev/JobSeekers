@@ -1,0 +1,29 @@
+.list-wrapper {
+  display: flex;
+}
+
+.list-wrapper li {
+  padding: 20px;
+}
+
+.list-wrapper li a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #7a7d85;
+}
+
+.list-wrapper li a:hover {
+  color: #60b0f4;
+}
+
+footer {
+  display: flex;
+  
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer-bold {
+  font-weight: bold;
+}

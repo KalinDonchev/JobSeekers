@@ -1,0 +1,47 @@
+
+.background-title,
+.latest-offers-title {
+  font-size: 40px;
+  padding: 80px 90px;
+}
+
+.latest-offers-title {
+  text-align: center;
+  text-shadow: 2px 3px 7px rgba(0, 0, 0, 0.69);
+}
+
+.background-text {
+  font-size: 30px;
+  width: 60%;
+  margin: 0 auto 80px auto;
+}
+
+.btn {
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+  width: 115px;
+  height: 25px;
+  background: #60b0f4;
+  padding: 10px 16px;
+  text-align: center;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  line-height: 25px;
+  font-size: 20px;
+}
+
+.view-more {
+  margin: 40px auto;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.offers-article-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

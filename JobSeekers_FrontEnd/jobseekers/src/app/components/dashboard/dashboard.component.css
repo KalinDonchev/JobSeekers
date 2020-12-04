@@ -1,0 +1,46 @@
+.background-image-wrapper {
+    background-image: url("https://res.cloudinary.com/kalindonchev-cloud/image/upload/v1606763464/kjojbprq4q1jhdtb20wc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    padding: 120px;
+  }
+  
+  .background-image-info {
+    text-shadow: 2px 3px 7px rgba(0, 0, 0, 0.69);
+    text-align: center;
+    color: white;
+  }
+  
+  .background-title,
+  .latest-offers-title {
+    font-size: 40px;
+    padding: 80px 90px;
+  }
+  
+  
+  .background-text {
+    font-size: 30px;
+    width: 60%;
+    margin: 0 auto 80px auto;
+  }
+  
+  .btn {
+    display: block;
+    margin: 0 auto;
+    text-decoration: none;
+    width: 115px;
+    height: 25px;
+    background: #60b0f4;
+    padding: 10px 16px;
+    text-align: center;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    font-size: 20px;
+  }
+
+  .btn:hover {
+    cursor: pointer;
+  }

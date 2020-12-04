@@ -1,0 +1,31 @@
+.main-navigation {
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
+.image-wrapper img {
+  height: 75px;
+}
+
+.list-wrapper {
+  display: flex;
+}
+
+.list-wrapper li {
+  padding: 20px;
+}
+
+.list-wrapper li a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #7a7d85;
+}
+
+.list-wrapper li a:hover {
+  color: #60b0f4;
+}
+
+ul.list-wrapper:nth-child(1) {
+  margin-top: 10px;
+}

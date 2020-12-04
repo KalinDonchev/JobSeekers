@@ -1,0 +1,30 @@
+mat-card {
+    max-width: 400px;
+    height: 380px;
+    margin: 100px auto;
+    text-align: center;
+  }
+  
+  mat-form-field {
+    display: block;
+    margin-top: 20px;
+  }
+
+.register-title {
+  font-size: 30px;
+}
+
+  .btn {
+    margin-top: 50px;
+    outline: none;
+    border: none;    
+    text-decoration: none;
+    background: #60b0f4;
+    padding: 10px 60px;
+    text-align: center;
+    border-radius: 18px;
+    color: white;
+    font-weight: bold;
+    line-height: 20px;
+    font-size: 20px;
+  }

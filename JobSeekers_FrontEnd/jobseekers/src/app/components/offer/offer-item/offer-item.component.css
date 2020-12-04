@@ -1,0 +1,44 @@
+:host{
+  width: 20%;
+}
+
+.offer-card {
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
+.offer-card img {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.seller-username {
+  text-align: center;
+  margin: 10px auto;
+}
+
+.seller-username a {
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+}
+
+.seller-username a:hover {
+  text-decoration: underline;
+}
+
+.seller-offer-title {
+  font-size: 22px;
+  line-height: 120%;
+  padding: 0 8px;
+}
+
+.offer-price {
+  margin: 10px auto;
+  text-align: right;
+}
+
+.actual-price {
+  margin-right: 8px;
+}
