@@ -1,29 +1,44 @@
 <mat-card>
-    <mat-card-content>
-      <form #form="ngForm" (ngSubmit)="registerHandler(form.value)">
-        <h2 class="register-title">Register</h2>
-        <!-- <mat-error *ngIf>
+  <mat-card-content>
+    <form #form="ngForm" (ngSubmit)="registerHandler(form.value)">
+      <h2 class="register-title">Register</h2>
+      <!-- <mat-error *ngIf>
           The username and password were not recognised
         </mat-error> -->
-        <mat-form-field class="full-width-input">
-            <input #userUsername="ngModel" ngModel matInput placeholder="Username" name="username" required>
-            <mat-error>
-              Please provide a valid username
-            </mat-error>
-          </mat-form-field>
-        <mat-form-field class="full-width-input">
-          <input #userEmail="ngModel" ngModel matInput placeholder="Email" name="email" required>
-          <mat-error>
-            Please provide a valid email address
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="full-width-input">
-          <input #userPassword="ngModel" ngModel matInput type="password" placeholder="Password" name="password" required>
-          <mat-error>
-            Please provide a valid password
-          </mat-error>
-        </mat-form-field>
-        <button class="btn"   color="primary">Register</button>
-      </form>
-    </mat-card-content>
-  </mat-card>
+      <mat-form-field class="full-width-input">
+        <input #userUsername="ngModel" ngModel matInput placeholder="Username" name="username" required>
+        <mat-error>
+          Please provide a valid username
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input #userEmail="ngModel" ngModel matInput placeholder="Email" name="email" required>
+        <mat-error>
+          Please provide a valid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input #userPhoneNumber="ngModel" ngModel matInput type="password" placeholder="Password" name="password" required>
+        <mat-error>
+          Please provide a valid phone number
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input #userPassword="ngModel" ngModel matInput type="password" placeholder="Password" name="password" required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input #userPassword="ngModel" ngModel matInput type="password" placeholder="Password" name="password" required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+      <!-- <mat-error *ngIf>
+          The username and password were not recognised
+        </mat-error> -->
+      <button class="btn" color="primary">Register</button>
+    </form>
+  </mat-card-content>
+</mat-card>
