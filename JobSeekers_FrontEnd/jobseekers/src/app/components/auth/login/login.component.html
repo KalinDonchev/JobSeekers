@@ -2,22 +2,34 @@
     <mat-card-content>
       <form #form="ngForm" (ngSubmit)="loginHandler(form.value)">
         <h2 class="login-title">Log In</h2>
-        <!-- <mat-error *ngIf>
-          The username and password were not recognised
-        </mat-error> -->
+        
         <mat-form-field class="full-width-input">
-          <input #userEmail="ngModel" ngModel matInput placeholder="Email" name="email" required>
-          <mat-error>
-            Please provide a valid email address
+          <input #userUsername="ngModel" ngModel matInput placeholder="Username" name="username" required minlength="3"
+          maxlength="14">
+          <mat-error *ngIf="userUsername.touched && userUsername.errors?.required">
+            Username is required!
+          </mat-error>
+          <mat-error *ngIf="userUsername.touched && (userUsername.errors?.minlength ||  userUsername.errors?.maxlength)">
+            Username must be at least 3 characters!
           </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width-input">
-          <input #userPassword="ngModel" ngModel matInput type="password" placeholder="Password" name="password" required>
-          <mat-error>
-            Please provide a valid password
-          </mat-error>
+          <input #userPassword="ngModel" ngModel matInput [type]="hide ? 'password' : 'text'" placeholder="Password" name="password" required minlength="4" maxlength="20">
+          <a class="btn-hide" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </a>
+        <mat-error *ngIf="userPassword.touched && userPassword.errors?.required">
+          Password is required!
+        </mat-error>
+        <mat-error *ngIf="userPassword.touched && userPassword.errors?.minlength">
+          Password must be at least 4 characters!
+        </mat-error>
         </mat-form-field>
-        <button class="btn"   color="primary">Login</button>
+        <mat-error *ngIf="errorMessage">
+          Username or password not correct!
+        </mat-error>
+        <button class="btn" [disabled]="form.invalid" color="primary">Login</button>
       </form>
     </mat-card-content>
   </mat-card>

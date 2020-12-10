@@ -16,6 +16,10 @@ public class RegisterRequest {
     @Email
     private String email;
 
+    @NotBlank
+    @Size(min = 10)
+    private String phoneNumber;
+
     private Set<String> authorities;
 
     @NotBlank
@@ -44,6 +48,14 @@ public class RegisterRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Set<String> getAuthorities() {

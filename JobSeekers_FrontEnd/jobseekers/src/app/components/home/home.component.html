@@ -1,1 +1,15 @@
-<p>home works!</p>
+<ng-container *ngIf="!isLogged; then dashboardContent else homeContent"></ng-container>
+
+<ng-template #dashboardContent>
+    <app-dashboard></app-dashboard>
+</ng-template>
+
+<ng-template #homeContent>
+    <h2 *ngIf="isLogged" class="user-welcome">Hello, {{userUsername}}!</h2>
+<div class="slider">
+<carousel [objectFit]="'cover'" [cellWidth]="'100%'" [arrowsOutside]="true" [autoplay]="true"
+    [dots]="true" [height]="300" [width]="800" [images]="images" [borderRadius]="10">
+</carousel>
+</div>
+<app-offer-list></app-offer-list>
+</ng-template>

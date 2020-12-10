@@ -1,5 +1,6 @@
 package com.kalin.jobseekers.service.models;
 
+import java.util.List;
 import java.util.Set;
 
 public class UserServiceModel extends BaseServiceModel {
@@ -7,8 +8,12 @@ public class UserServiceModel extends BaseServiceModel {
     private String username;
     private String email;
     private String password;
-    private String confirmPassword;
     private String phoneNumber;
+
+    private List<OfferServiceModel> offers;
+
+    private List<OfferServiceModel> favouriteOffers;
+
     private Set<RoleServiceModel> authorities;
 
     public UserServiceModel() {
@@ -39,20 +44,28 @@ public class UserServiceModel extends BaseServiceModel {
         this.password = password;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<OfferServiceModel> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<OfferServiceModel> offers) {
+        this.offers = offers;
+    }
+
+    public List<OfferServiceModel> getFavouriteOffers() {
+        return favouriteOffers;
+    }
+
+    public void setFavouriteOffers(List<OfferServiceModel> favouriteOffers) {
+        this.favouriteOffers = favouriteOffers;
     }
 
     public Set<RoleServiceModel> getAuthorities() {

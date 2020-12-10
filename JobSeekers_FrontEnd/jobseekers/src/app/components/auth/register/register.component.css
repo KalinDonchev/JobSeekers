@@ -1,6 +1,6 @@
 mat-card {
     max-width: 400px;
-    height: 380px;
+    height: 530px;
     margin: 100px auto;
     text-align: center;
   }
@@ -28,3 +28,14 @@ mat-card {
     line-height: 20px;
     font-size: 20px;
   }
+
+  .btn-hide {
+    border:none;
+    outline:none;
+    background-color: white;
+  }
+
+  .btn-hide:hover{
+    cursor: pointer;
+  }
+

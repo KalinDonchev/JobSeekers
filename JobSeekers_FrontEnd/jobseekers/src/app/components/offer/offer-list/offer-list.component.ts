@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-offer-list',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OfferListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
+
+  get isLogged(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
 
   ngOnInit(): void {
   }

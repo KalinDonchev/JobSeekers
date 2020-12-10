@@ -4,23 +4,23 @@ import java.util.List;
 
 public class JwtResponse {
 
-    private String token;
+    private String accessToken;
     private String type = "Bearer";
     private String username;
     private List<String> authorities;
 
     public JwtResponse(String accessToken, String username, List<String> authorities) {
-        this.token = accessToken;
+        this.accessToken = accessToken;
         this.username = username;
         this.authorities = authorities;
     }
 
-    public String getToken() {
-        return token;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public String getType() {

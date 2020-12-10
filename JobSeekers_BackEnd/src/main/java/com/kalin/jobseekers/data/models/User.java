@@ -1,10 +1,11 @@
 package com.kalin.jobseekers.data.models;
 
-import org.springframework.security.core.GrantedAuthority;
+
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
+
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -19,7 +20,21 @@ public class User extends BaseEntity implements UserDetails {
     private String password;
     @Column(name = "phone_number")
     private String phoneNumber;
-
+    @OneToMany(mappedBy = "user")
+    private List<Offer> offers;
+    @ManyToMany(targetEntity = Offer.class, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_favourite_offers",
+            joinColumns = @JoinColumn(
+                    name = "user_id",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "offer_id",
+                    referencedColumnName = "id"
+            )
+    )
+    private List<Offer> favouriteOffers;
     @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",

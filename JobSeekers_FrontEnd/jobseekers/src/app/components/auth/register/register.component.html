@@ -2,43 +2,70 @@
   <mat-card-content>
     <form #form="ngForm" (ngSubmit)="registerHandler(form.value)">
       <h2 class="register-title">Register</h2>
-      <!-- <mat-error *ngIf>
-          The username and password were not recognised
-        </mat-error> -->
+
       <mat-form-field class="full-width-input">
-        <input #userUsername="ngModel" ngModel matInput placeholder="Username" name="username" required>
-        <mat-error>
-          Please provide a valid username
+        <input #userUsername="ngModel" ngModel matInput placeholder="Username" name="username" required minlength="3"
+          maxlength="14">
+        <mat-error *ngIf="userUsername.touched && userUsername.errors?.required">
+          Username is required!
+        </mat-error>
+        <mat-error *ngIf="userUsername.touched && (userUsername.errors?.minlength ||  userUsername.errors?.maxlength)">
+          Username must be at least 3 characters!
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
-        <input #userEmail="ngModel" ngModel matInput placeholder="Email" name="email" required>
-        <mat-error>
-          Please provide a valid email address
+        <input #userEmail="ngModel" ngModel matInput placeholder="Email" name="email" required
+          pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" maxlength="50">
+        <mat-error *ngIf="userEmail.touched && userEmail.errors?.required">
+          Email is required!
+        </mat-error>
+        <mat-error *ngIf="userEmail.touched && userEmail.errors?.pattern">
+          Please provide a valid email!
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
-        <input #userPhoneNumber="ngModel" ngModel matInput type="password" placeholder="Password" name="password" required>
-        <mat-error>
-          Please provide a valid phone number
+        <input #userPhoneNumber="ngModel" ngModel matInput type="tel" placeholder="Phone Number" name="phoneNumber"
+          required minlength="10" pattern="[0-9]{10,}">
+        <mat-error *ngIf="userPhoneNumber.touched && userPhoneNumber.errors?.required">
+          Phone Number is required!
+        </mat-error>
+        <mat-error *ngIf="userPhoneNumber.touched && userPhoneNumber.errors?.pattern">
+          Please provide a valid phone number!
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
-        <input #userPassword="ngModel" ngModel matInput type="password" placeholder="Password" name="password" required>
-        <mat-error>
-          Please provide a valid password
+        <input #userPassword="ngModel" ngModel matInput [type]="hide ? 'password' : 'text'" placeholder="Password"
+          name="password" required minlength="4" maxlength="20">
+        <a class="btn-hide" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </a>
+        <mat-error *ngIf="userPassword.touched && userPassword.errors?.required">
+          Password is required!
+        </mat-error>
+        <mat-error *ngIf="userPassword.touched && userPassword.errors?.minlength">
+          Password must be at least 4 characters!
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
-        <input #userPassword="ngModel" ngModel matInput type="password" placeholder="Password" name="password" required>
-        <mat-error>
-          Please provide a valid password
+        <input #userConfirmPassword="ngModel" ngModel matInput [type]="hideConfirm ? 'password' : 'text'"
+          placeholder="Confirm Password" name="confirmPassword" required ngValidateEqual="password" minlength="4"
+          maxlength="20">
+        <a class="btn-hide" mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm"
+          [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </a>
+        <mat-error *ngIf="userPassword.touched && userPassword.errors?.required">
+          Repeat Password is required!
+        </mat-error>
+        <mat-error *ngIf="userConfirmPassword.hasError('notEqual') && userPassword.errors?.minlength">
+          Repeat Password does not match Password!
         </mat-error>
       </mat-form-field>
-      <!-- <mat-error *ngIf>
-          The username and password were not recognised
-        </mat-error> -->
-      <button class="btn" color="primary">Register</button>
+       <mat-error *ngIf="errorMessage">
+          {{errorMessage}}
+        </mat-error>
+      <button class="btn" [disabled]="form.invalid" color="primary">Register</button>
     </form>
   </mat-card-content>
 </mat-card>

@@ -1,15 +1,14 @@
 package com.kalin.jobseekers.data.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 public class Offer extends BaseEntity {
 
     @Column(nullable = false)
-    private String name;
+    private String title;
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)
@@ -17,18 +16,25 @@ public class Offer extends BaseEntity {
     // TRY TO UPLOAD MULTIPLE PHOTOS
     @Column(nullable = false)
     private String imageUrl;
-    @Column(nullable = false)
-    private String category;
+    @ManyToOne
+    @JoinColumn(name = "cateogry_id")
+    private Category category;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+    @ManyToMany(mappedBy = "favouriteOffers")
+    private List<User> usersFav;
+
 
     public Offer() {
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -55,11 +61,27 @@ public class Offer extends BaseEntity {
         this.imageUrl = imageUrl;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<User> getUsersFav() {
+        return usersFav;
+    }
+
+    public void setUsersFav(List<User> usersFav) {
+        this.usersFav = usersFav;
     }
 }

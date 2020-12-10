@@ -28,3 +28,14 @@ mat-card {
     line-height: 20px;
     font-size: 20px;
   }
+
+  .btn-hide {
+    border:none;
+    outline:none;
+    background-color: white;
+  }
+
+  .btn-hide:hover{
+    cursor: pointer;
+  }
+

@@ -6,6 +6,8 @@ import { AuthRoutingModule } from './auth-routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import { ValidateEqualModule } from 'ng-validate-equal';
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent],
@@ -15,9 +17,11 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     AuthRoutingModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    ValidateEqualModule
   ],
   providers: [],
-  exports: [RegisterComponent, LoginComponent]
+  
 })
 export class AuthModule { }

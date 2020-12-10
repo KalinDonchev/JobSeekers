@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  images = [
+    {
+        path: 'https://res.cloudinary.com/kalindonchev-cloud/image/upload/v1606763464/kjojbprq4q1jhdtb20wc.jpg',
+    },
+    {
+        path: 'https://res.cloudinary.com/kalindonchev-cloud/image/upload/v1607515821/f7aavnoyivslhdtb7v2z.jpg',
+    },
+    {
+        path: 'https://res.cloudinary.com/kalindonchev-cloud/image/upload/v1607515821/f7aavnoyivslhdtb7v2z.jpg',
+    }
+  ]
+
+
+  constructor(private authService: AuthService) { }
+
+  get isLogged(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
+  get userUsername(): string {
+    return this.authService.getCurrentUserUsername();
+  }
 
   ngOnInit(): void {
   }
+
+
+
 
 }

@@ -93,6 +93,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public JwtResponse login(UserServiceModel user) {
+
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 

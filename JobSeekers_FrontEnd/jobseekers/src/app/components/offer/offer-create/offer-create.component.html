@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="submitHandler()" enctype="multipart/form-data">
+            <h2 class="offer-title">Create your Offer</h2>
+            <mat-form-field class="full-width-input">
+                <mat-label>Offer Title</mat-label>
+                <input formControlName="title" name="title" matInput placeholder="Ex. I will create your ...">
+                <mat-error *ngIf="form.get('title').touched && form.get('title').errors?.required">
+                    Title is required!
+                </mat-error>
+                <mat-error
+                    *ngIf="form.get('title').touched && (form.get('title').errors?.minlength || form.get('title').errors?.maxlength)">
+                    Title must be at least 20 characters!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <mat-label>Offer Description</mat-label>
+                <input formControlName="description" matInput placeholder="Description..." name="description">
+                <mat-error *ngIf="form.get('description').touched && form.get('description').errors?.required">
+                    Description is required!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <mat-label>Price</mat-label>
+                <input formControlName="price" matInput type="number" placeholder="Price" name="price">
+                <mat-error *ngIf="form.get('price').touched && form.get('price').errors?.required">
+                    Price is required!
+                </mat-error>
+                <mat-error *ngIf="form.get('price').touched && form.get('price').errors?.min">
+                    Price must be positive!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="category" name="category" required>
+                    <mat-option *ngFor="let category of (categories$ | async)" [value]="category.name">
+                        {{category.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('category').touched && form.get('category').errors?.required">
+                    Category is required!
+                </mat-error>
+            </mat-form-field>
+            <div class="image-button">
+                <input #uploadBtn id="file"  type="file" name="file" required
+                    (change)="uploadFileEvent($event)" accept=".png, .jpg, .jpeg" style="display: none;">
+                <input class="upload-btn" value="Upload image" (click)="uploadBtn.click();">
+            </div>
+            <mat-error *ngIf="errorMessage">
+                {{errorMessage}}
+            </mat-error>
+            <button class="btn"  color="primary">Create Offer</button>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { authInterceptorProviders } from './core/interceptors/auth.interceptor';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -28,7 +30,10 @@ import { authInterceptorProviders } from './core/interceptors/auth.interceptor';
     BrowserAnimationsModule,
     OfferModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    IvyCarouselModule,
+    MatMenuModule,
+    
   ],
   providers: [
     authInterceptorProviders
