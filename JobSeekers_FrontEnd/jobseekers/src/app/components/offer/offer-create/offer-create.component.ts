@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICategoryInfo } from 'src/app/core/interfaces/category-info';
 import { CategoryService } from 'src/app/core/services/category.service';
@@ -7,6 +7,8 @@ import { OfferService } from 'src/app/core/services/offer.service';
 import { Router } from '@angular/router';
 import { ICreateOffer } from 'src/app/core/interfaces/create-offer';
 import { TokenStorageService } from 'src/app/core/services/token-storage.service';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-offer-create',
@@ -15,6 +17,8 @@ import { TokenStorageService } from 'src/app/core/services/token-storage.service
 })
 export class OfferCreateComponent implements OnInit {
 
+  @ViewChild('autosize') autosize: CdkTextareaAutosize;
+  images = [];
   form: FormGroup;
   categories$: Observable<ICategoryInfo[]>;
   offer: ICreateOffer;
@@ -24,7 +28,7 @@ export class OfferCreateComponent implements OnInit {
      private categoryService: CategoryService,
       private offerService: OfferService,
        private router: Router,
-       private tokenService: TokenStorageService) { }
+       private tokenService: TokenStorageService, private _ngZone: NgZone) { }
 
   ngOnInit(): void {
     this.categories$ = this.categoryService.getAllCategories();
@@ -42,14 +46,13 @@ export class OfferCreateComponent implements OnInit {
   }
 
   submitHandler() {
-    const data = this.form.value;
-
+       
     this.offer = {
-      title: data.title,
-      description: data.description,
-      price: data.price,
-      image: data.file,
-      category: data.category,
+      title: this.f.title.value,
+      description: this.f.description.value,
+      price: this.f.price.value,
+      images: this.f.fileSource.value,
+      category: this.f.category.value,
       user: this.tokenService.getUsername()
     }
     
@@ -65,13 +68,39 @@ export class OfferCreateComponent implements OnInit {
 
   }
 
-  uploadFileEvent(imgFile: any) {
+  get f() {
+    return this.form.controls;
+  }
 
-    if (imgFile.target.files.length > 0) {
-      const file = imgFile.target.files[0];
-      this.form.get('file').setValue(file);
+  uploadFileEvent(event) {
+
+    if (event.target.files && event.target.files[0]) {
+
+      var filesAmount = event.target.files.length;
+
+      for (let i = 0; i < filesAmount; i++) {
+
+        var reader = new FileReader();
+
+        reader.onload = (event: any) => {
+
+          this.images.push(event.target.result);
+
+          this.form.patchValue({
+            fileSource: this.images
+          });
+        }
+
+        reader.readAsDataURL(event.target.files[i]);
+      }
     }
 
+  }
+
+  triggerResize() {
+    // Wait for changes to be applied, then trigger textarea resize.
+    this._ngZone.onStable.pipe(take(1))
+        .subscribe(() => this.autosize.resizeToFitContent(true));
   }
 
 }

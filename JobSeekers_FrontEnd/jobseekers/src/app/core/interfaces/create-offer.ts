@@ -3,6 +3,6 @@ export interface ICreateOffer {
     description: string;
     price: number;
     category: string;
-    image: File;
+    images: string[];
     user: string
 }

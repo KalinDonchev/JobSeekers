@@ -1,10 +1,12 @@
 package com.kalin.jobseekers.data.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -22,6 +24,7 @@ public class User extends BaseEntity implements UserDetails {
     private String phoneNumber;
     @OneToMany(mappedBy = "user")
     private List<Offer> offers;
+    @JsonIgnore
     @ManyToMany(targetEntity = Offer.class, cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_favourite_offers",
@@ -50,6 +53,7 @@ public class User extends BaseEntity implements UserDetails {
     private Set<Role> authorities;
 
     public User() {
+        this.setFavouriteOffers(new ArrayList<>());
     }
 
     public String getUsername() {
@@ -104,6 +108,22 @@ public class User extends BaseEntity implements UserDetails {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
+    }
+
+    public List<Offer> getFavouriteOffers() {
+        return favouriteOffers;
+    }
+
+    public void setFavouriteOffers(List<Offer> favouriteOffers) {
+        this.favouriteOffers = favouriteOffers;
     }
 
     @Override

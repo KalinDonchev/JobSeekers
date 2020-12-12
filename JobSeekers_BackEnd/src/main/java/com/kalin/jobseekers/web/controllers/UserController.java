@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.security.Principal;
+
 import static org.springframework.http.ResponseEntity.ok;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
@@ -30,6 +33,13 @@ public class UserController {
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> userDetails(@RequestParam String username) {
         return ok(this.userService.getUserByUsername(username));
+    }
+
+    @PostMapping("/add-to-favourites/{offerId}")
+    public ResponseEntity<?> addOfferToFavourites(Principal principal, @PathVariable String offerId) throws IOException {
+        String principalName = principal.getName();
+        userService.addOfferToFavourites(offerId, principalName);
+        return ok().build();
     }
 
 

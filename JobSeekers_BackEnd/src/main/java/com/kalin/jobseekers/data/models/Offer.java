@@ -1,7 +1,10 @@
 package com.kalin.jobseekers.data.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,19 +17,25 @@ public class Offer extends BaseEntity {
     @Column(nullable = false)
     private BigDecimal price;
     // TRY TO UPLOAD MULTIPLE PHOTOS
-    @Column(nullable = false)
-    private String imageUrl;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "offers_photos",
+            joinColumns = @JoinColumn(name = "offer_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "image_id", referencedColumnName = "id")
+    )
+    private List<Image> images;
     @ManyToOne
     @JoinColumn(name = "cateogry_id")
     private Category category;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
+    @JsonIgnore
     @ManyToMany(mappedBy = "favouriteOffers")
     private List<User> usersFav;
 
 
     public Offer() {
+        this.setImages(new ArrayList<>());
     }
 
     public String getTitle() {
@@ -53,12 +62,12 @@ public class Offer extends BaseEntity {
         this.price = price;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public List<Image> getImages() {
+        return images;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 
     public Category getCategory() {

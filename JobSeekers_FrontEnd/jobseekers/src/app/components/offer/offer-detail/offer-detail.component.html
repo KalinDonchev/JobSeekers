@@ -1,0 +1,43 @@
+<article class="offer-card">
+    <div class="offer-title">
+        <h2 class="offer-title-heading">Title :</h2>
+        <h3 class="offer-title-title">{{offer.title}}</h3>
+    </div>
+    <div class="offer-description">
+        <h2 class="offer-title-heading">Description :</h2>
+        <p class="offer-description-description">{{offer.description}}</p>
+    </div>
+    <div class="offer-category">
+        <h2 class="offer-title-heading">Category :</h2>
+        <h3 class="offer-title-title"> {{offer.category}}</h3>
+
+    </div>
+    <div class="offer-price">
+        <h2 class="offer-title-heading">Price :</h2>
+        <h3 class="offer-title-price">{{offer.price}}$</h3>
+    </div>
+    <div class="seller-username">
+        <h2 class="offer-title-heading">Username :</h2>
+        <h3 class="offer-title-username">{{offer.userDetailsViewModel.username}}</h3>
+    </div>
+    <div class="seller-email">
+        <h2 class="offer-title-heading">Email :</h2>
+        <h3 class="offer-title-email">{{offer.userDetailsViewModel.email}}</h3>
+    </div>
+    <div class="seller-phoneNumber">
+        <h2 class="offer-title-heading">Phone Number :</h2>
+        <h3 class="offer-title-phoneNumber">{{offer.userDetailsViewModel.phoneNumber}}</h3>
+    </div>
+    <!-- <h3 class="seller-offer-title">
+        {{offer.title}}
+    </h3>
+    <div class="offer-price">
+        <span>Price: </span>
+        <span class="actual-price">{{offer.price}}</span>
+    </div> -->
+    <div class="image-wrapper">
+        <img src={{offer.imageUrl}} alt="" />
+    </div>
+    <button class="btn" *ngIf="currentUsername !== offer.userDetailsViewModel.username" class="btn btn-favourite" routerLink="/auth/register">Add To Favourites</button>
+    <button class="btn" *ngIf="currentUsername == offer.userDetailsViewModel.username" class="btn btn-delete"(click)="deleteOffer()">Delete</button>
+</article>

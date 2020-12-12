@@ -1,13 +1,13 @@
 <article class="offer-card">
-    <img src="https://res.cloudinary.com/kalindonchev-cloud/image/upload/v1606763482/hwlaw3gsaxxg7pihfl8t.png" alt="">
+    <a [routerLink]="['/offer/details', offer.id]"><img src={{offer.imageUrl}} alt=""></a>
     <div class="seller-username">
-        <a href="">Kalin</a>
+        <a href="">{{offer.user}}</a>
     </div>
     <h3 class="seller-offer-title">
-        I will create your perfect voice over for every movie
+        {{offer.title}}
     </h3>
     <div class="offer-price">
         <span>Price: </span>
-        <span class="actual-price">$8.24</span>
+        <span class="actual-price">{{offer.price}}</span>
     </div>
 </article>

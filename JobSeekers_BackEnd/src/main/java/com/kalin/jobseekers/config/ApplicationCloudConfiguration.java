@@ -1,6 +1,7 @@
 package com.kalin.jobseekers.config;
 
 import com.cloudinary.Cloudinary;
+import com.cloudinary.Uploader;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +25,11 @@ public class ApplicationCloudConfiguration {
             put("api_key", cloudApiKey);
             put("api_secret", cloudApiSecret);
         }});
+    }
+
+    @Bean
+    public Uploader uploader() {
+        return this.cloudinary().uploader();
     }
 
 }

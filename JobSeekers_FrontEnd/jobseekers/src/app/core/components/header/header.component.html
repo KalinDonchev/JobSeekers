@@ -19,7 +19,7 @@
             <li *ngIf="isLogged">
                 <a mat-button [matMenuTriggerFor]="menu">My Profile</a>
                 <mat-menu #menu="matMenu">
-                    <a mat-menu-item>My Offers</a>
+                    <a mat-menu-item [routerLink]="['/offer/my-offers',userUsername]">My Offers</a>
                     <a mat-menu-item>My Profile</a>
                     <a mat-menu-item routerLink="/offer/create">Create Offer</a>
                     <a mat-menu-item>Saved Offers</a>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IOfferInfoList } from 'src/app/core/interfaces/offer-info-list';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { OfferService } from 'src/app/core/services/offer.service';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +23,7 @@ export class HomeComponent implements OnInit {
     }
   ]
 
+  
 
   constructor(private authService: AuthService) { }
 
@@ -32,6 +36,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   
   }
 
 

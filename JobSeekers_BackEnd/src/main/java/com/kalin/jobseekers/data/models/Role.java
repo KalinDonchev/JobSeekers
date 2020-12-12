@@ -1,9 +1,11 @@
 package com.kalin.jobseekers.data.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import java.util.Set;
 
@@ -13,6 +15,7 @@ public class Role extends BaseEntity implements GrantedAuthority {
     @Column
     private String authority;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "authorities")
     private Set<User> users;
 

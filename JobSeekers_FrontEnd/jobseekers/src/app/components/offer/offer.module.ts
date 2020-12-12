@@ -13,8 +13,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { MatButtonModule } from '@angular/material/button';
 
+import { OfferDetailComponent } from './offer-detail/offer-detail.component';
+import { MyOffersComponent } from './my-offers/my-offers.component';
+
 @NgModule({
-  declarations: [OfferItemComponent, OfferListComponent, OfferCreateComponent],
+  declarations: [OfferItemComponent, OfferListComponent, OfferCreateComponent, OfferDetailComponent, MyOffersComponent],
   imports: [
     CommonModule,
     RouterModule,

@@ -8,7 +8,7 @@ public class OfferServiceModel extends BaseServiceModel {
     private String description;
     private BigDecimal price;
     private CategoryServiceModel category;
-    private String imageUrl;
+    private String[] images;
     private UserServiceModel user;
 
     public OfferServiceModel() {
@@ -47,12 +47,12 @@ public class OfferServiceModel extends BaseServiceModel {
         this.category = category;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String[] getImages() {
+        return images;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImages(String[] images) {
+        this.images = images;
     }
 
     public UserServiceModel getUser() {

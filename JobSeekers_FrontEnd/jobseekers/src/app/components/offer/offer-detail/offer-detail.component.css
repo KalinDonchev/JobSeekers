@@ -1,0 +1,70 @@
+.offer-card {
+  width: 70%;
+  margin: 50px auto;
+  min-height: 380px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.offer-card div {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+
+.offer-card img {
+  display: block;
+  box-sizing: border-box;
+  width: 40%;
+  margin: 0px auto;
+}
+
+.offer-title-heading {
+    font-weight: bold;
+  font-size: 22px;
+  line-height: 120%;
+  padding: 20px 8px;
+}
+
+.offer-username a {
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+}
+
+.offer-username a:hover {
+  text-decoration: underline;
+}
+
+.offer-offer-title {
+  font-size: 22px;
+  line-height: 120%;
+  padding: 0 8px;
+}
+
+.offer-price {
+  margin: 10px auto;
+ 
+}
+
+.actual-price {
+  margin-right: 8px;
+}
+
+.btn {
+    border: none;
+    margin: 20px auto;
+    text-decoration: none;
+    background: #60b0f4;
+    padding: 10px 16px;
+    text-align: center;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    font-size: 20px;
+  }
+
+  .btn:hover {
+    cursor: pointer;
+  }

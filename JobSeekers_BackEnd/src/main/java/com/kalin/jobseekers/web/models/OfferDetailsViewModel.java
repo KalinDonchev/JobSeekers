@@ -1,20 +1,19 @@
 package com.kalin.jobseekers.web.models;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import java.math.BigDecimal;
 
-public class OfferCreateModel {
+public class OfferDetailsViewModel {
 
     private String title;
     private String description;
     private BigDecimal price;
     private String category;
-    private String[] images;
-    private String user;
+    private String imageUrl;
+    private UserDetailsViewModel userDetailsViewModel;
 
-    public OfferCreateModel() {
+    public OfferDetailsViewModel() {
     }
+
 
     public String getTitle() {
         return title;
@@ -48,19 +47,19 @@ public class OfferCreateModel {
         this.category = category;
     }
 
-    public String[] getImages() {
-        return images;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImages(String[] images) {
-        this.images = images;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public String getUser() {
-        return user;
+    public UserDetailsViewModel getUserDetailsViewModel() {
+        return userDetailsViewModel;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUserDetailsViewModel(UserDetailsViewModel userDetailsViewModel) {
+        this.userDetailsViewModel = userDetailsViewModel;
     }
 }
