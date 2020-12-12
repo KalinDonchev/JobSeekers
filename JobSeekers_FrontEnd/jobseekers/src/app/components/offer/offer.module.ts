@@ -15,9 +15,10 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { OfferDetailComponent } from './offer-detail/offer-detail.component';
 import { MyOffersComponent } from './my-offers/my-offers.component';
+import { FavOffersComponent } from './fav-offers/fav-offers.component';
 
 @NgModule({
-  declarations: [OfferItemComponent, OfferListComponent, OfferCreateComponent, OfferDetailComponent, MyOffersComponent],
+  declarations: [OfferItemComponent, OfferListComponent, OfferCreateComponent, OfferDetailComponent, MyOffersComponent, FavOffersComponent],
   imports: [
     CommonModule,
     RouterModule,

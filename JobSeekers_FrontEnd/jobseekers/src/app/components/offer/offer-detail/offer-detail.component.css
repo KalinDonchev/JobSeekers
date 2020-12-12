@@ -52,6 +52,7 @@
 }
 
 .btn {
+    outline: none;
     border: none;
     margin: 20px auto;
     text-decoration: none;
@@ -67,4 +68,13 @@
 
   .btn:hover {
     cursor: pointer;
+  }
+
+  .offer-description { 
+      height: 200px;
+  }
+
+  .offer-description-description {
+      
+       word-wrap: break-word;
   }

@@ -42,6 +42,15 @@ export class OfferService {
   getAllOffersByCreator(username: string): Observable<IOfferInfoList[]>{
     return this.http.get<IOfferInfoList[]>(`${baseURL}/created-by/${username}`);
   }
+  getAllFavOffersByUser(username: string): Observable<IOfferInfoList[]>{
+    return this.http.get<IOfferInfoList[]>(`${baseURL}/favourite-offers/${username}`);
+  }
+
+  getLatestOffers(limit: number) {
+    return this.http.get<IOfferInfoList[]>(`${this.getAllUrl}?limit=${limit}`);
+  }
+
+
 
 
 }

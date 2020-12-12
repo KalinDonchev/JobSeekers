@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
+import { FavOffersComponent } from './fav-offers/fav-offers.component';
 import { MyOffersComponent } from './my-offers/my-offers.component';
 import { OfferCreateComponent } from './offer-create/offer-create.component';
 import { OfferDetailComponent } from './offer-detail/offer-detail.component';
@@ -18,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'favourite-offers/:username',
-    component: MyOffersComponent
+    component: FavOffersComponent
   },
 ];
 

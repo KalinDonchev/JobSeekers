@@ -1,20 +1,37 @@
 <section class="latest-offers-wrapper">
-    <div *ngIf="isHomeRoute(); else elseBlock">
+    <div *ngIf="isHomeRoute(); else myOffers">
         <h1 *ngIf="isLogged" class="latest-offers-title">All Offers</h1>
         <h1 *ngIf="!isLogged" class="latest-offers-title">Latest Offers</h1>
         <div class="offers-container">
             <section class="offers-article-wrapper">
-                <app-offer-item *ngFor="let offer of (offers$ | async)" [offer]="offer"></app-offer-item>
+                
+                    <!-- <app-offer-item  *ngFor="let offer of (latestOffers$ | async)" [offer]="offer"></app-offer-item> -->
+                
+               
+                    <app-offer-item *ngFor="let offer of (offers$ | async)" [offer]="offer"></app-offer-item>
+               
+                
             </section>
         </div>
     </div>
-    <ng-template #elseBlock>
-        <h1 class="latest-offers-title">My Offers</h1>
+    <ng-template #myOffers>
+        <div *ngIf="isMyOffersRoute(); else favOffers">
+            <h1 class="latest-offers-title">My Offers</h1>
+            <div class="offers-container">
+                <section class="offers-article-wrapper">
+                    <app-offer-item *ngFor="let offer of (userOffers$ | async)" [offer]="offer"></app-offer-item>
+                </section>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #favOffers>
+        <h1 class="latest-offers-title">Favourite Offers</h1>
         <div class="offers-container">
             <section class="offers-article-wrapper">
-                <app-offer-item *ngFor="let offer of (userOffers$ | async)" [offer]="offer"></app-offer-item>
+                <app-offer-item *ngFor="let offer of (userFavOffers$ | async)" [offer]="offer"></app-offer-item>
             </section>
         </div>
     </ng-template>
+
 </section>
 <a *ngIf="!isLogged" class="btn view-more" routerLink="/auth/register">View More</a>

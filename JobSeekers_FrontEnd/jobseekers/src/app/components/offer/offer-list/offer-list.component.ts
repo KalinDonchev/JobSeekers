@@ -14,6 +14,8 @@ export class OfferListComponent implements OnInit {
 
   offers$: Observable<IOfferInfoList[]>;
   userOffers$: Observable<IOfferInfoList[]>;
+  userFavOffers$: Observable<IOfferInfoList[]>;
+  latestOffers$: Observable<IOfferInfoList[]>;
 
 
   constructor(private authService: AuthService,private offerService: OfferService,private router: Router) { }
@@ -30,11 +32,16 @@ export class OfferListComponent implements OnInit {
   ngOnInit(): void {
     this.offers$ = this.offerService.getAllOffers();
     this.userOffers$ = this.offerService.getAllOffersByCreator(this.userUsername);
-    console.log(this.offers$);
-  }
+    this.userFavOffers$ = this.offerService.getAllFavOffersByUser(this.userUsername);
+    this.latestOffers$ = this.offerService.getLatestOffers(3);
+   }
 
   isHomeRoute() {
     return this.router.url === '/home';
+  }
+
+  isMyOffersRoute() {
+    return this.router.url.includes("/offer/my-offer");
   }
 
 }

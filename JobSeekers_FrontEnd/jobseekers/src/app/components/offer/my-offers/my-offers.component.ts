@@ -8,7 +8,7 @@ import { OfferService } from 'src/app/core/services/offer.service';
 })
 export class MyOffersComponent implements OnInit {
 
-  constructor(private offerService: OfferService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

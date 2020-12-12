@@ -58,7 +58,7 @@
         <mat-error *ngIf="userPassword.touched && userPassword.errors?.required">
           Repeat Password is required!
         </mat-error>
-        <mat-error *ngIf="userConfirmPassword.hasError('notEqual') && userPassword.errors?.minlength">
+        <mat-error *ngIf="userConfirmPassword.hasError('notEqual')">
           Repeat Password does not match Password!
         </mat-error>
       </mat-form-field>

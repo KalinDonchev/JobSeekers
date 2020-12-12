@@ -25,6 +25,10 @@ const routes: Routes = [
     path: 'offer',
     loadChildren: () => import('./components/offer/offer.module').then(m => m.OfferModule), canLoad: [AuthGuard]
   },
+  {
+    path: 'user',
+    loadChildren: () => import('./components/user/user.module').then(m => m.UserModule), canLoad: [AuthGuard]
+  },
 ];
 
 @NgModule({

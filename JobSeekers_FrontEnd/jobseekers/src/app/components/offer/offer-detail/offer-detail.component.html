@@ -38,6 +38,8 @@
     <div class="image-wrapper">
         <img src={{offer.imageUrl}} alt="" />
     </div>
-    <button class="btn" *ngIf="currentUsername !== offer.userDetailsViewModel.username" class="btn btn-favourite" routerLink="/auth/register">Add To Favourites</button>
-    <button class="btn" *ngIf="currentUsername == offer.userDetailsViewModel.username" class="btn btn-delete"(click)="deleteOffer()">Delete</button>
+    <div *ngIf="!isMyFavOffersRoute()">
+        <button class="btn" *ngIf="currentUsername !== offer.userDetailsViewModel.username" class="btn btn-favourite" (click)="addToFavourites()">Add To Favourites</button>
+        <button class="btn" *ngIf="currentUsername == offer.userDetailsViewModel.username" class="btn btn-delete"(click)="deleteOffer()">Delete</button>
+    </div>
 </article>
