@@ -51,6 +51,7 @@ public class OfferServiceImpl implements OfferService {
 
 
     @Override
+    @Transactional
     public OfferServiceModel addOffer(OfferCreateModel offerCreateModel) throws IOException {
         Offer offer = this.offerRepository
                 .findByTitle(offerCreateModel.getTitle())
@@ -108,11 +109,27 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    public List<OfferInfoViewModel> getLatestOffers(Long number) {
+        List<Offer> top3ByOrderByIdDesc = this.offerRepository.findTop3ByOrderByIdDesc();
+        return mapModels(top3ByOrderByIdDesc);
+    }
+
+    @Override
     @Transactional
     public List<OfferInfoViewModel> getAllByCreator(String username) {
         //REFACTOR WITH MODEL
         List<Offer> collect = this.offerRepository.findAllByUserUsername(username);
         return mapModels(collect);
+    }
+
+    @Override
+    @Transactional
+    public List<OfferInfoViewModel> getFavOffersForUser(String username) {
+        User user = this.userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+
+        List<Offer> favouriteOffers = user.getFavouriteOffers();
+        return mapModels(favouriteOffers);
     }
 
     private List<OfferInfoViewModel> mapModels(List<Offer> collect) {
@@ -130,9 +147,15 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    @Transactional
     public void delete(DeleteOfferRequest deleteRequest) {
         Offer offer = this.offerRepository.findById(deleteRequest.getOfferId())
                 .orElseThrow(() -> new Error("No such offer"));
+
+        List<User> usersFav = offer.getUsersFav();
+        for (User user : usersFav) {
+            user.getFavouriteOffers().remove(offer);
+        }
 
         this.offerRepository.delete(offer);
     }

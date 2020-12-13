@@ -2,6 +2,7 @@ package com.kalin.jobseekers.data.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
@@ -25,7 +26,7 @@ public class User extends BaseEntity implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Offer> offers;
     @JsonIgnore
-    @ManyToMany(targetEntity = Offer.class, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_favourite_offers",
             joinColumns = @JoinColumn(

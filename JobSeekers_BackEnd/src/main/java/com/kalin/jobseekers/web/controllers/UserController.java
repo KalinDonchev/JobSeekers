@@ -2,6 +2,7 @@ package com.kalin.jobseekers.web.controllers;
 
 
 import com.kalin.jobseekers.service.services.UserService;
+import com.kalin.jobseekers.web.models.FavouriteOfferRequest;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,16 +30,15 @@ public class UserController {
     }
 
 
-    @GetMapping("/details")
-    @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> userDetails(@RequestParam String username) {
+    @GetMapping("/details/{username}")
+    public ResponseEntity<?> userDetails(@PathVariable String username) {
         return ok(this.userService.getUserByUsername(username));
     }
 
-    @PostMapping("/add-to-favourites/{offerId}")
-    public ResponseEntity<?> addOfferToFavourites(Principal principal, @PathVariable String offerId) throws IOException {
+    @PostMapping("/add-to-favourites/{id}")
+    public ResponseEntity<?> addOfferToFavourites(@PathVariable String id, Principal principal) throws IOException {
         String principalName = principal.getName();
-        userService.addOfferToFavourites(offerId, principalName);
+        userService.addOfferToFavourites(id, principalName);
         return ok().build();
     }
 

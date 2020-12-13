@@ -1,6 +1,7 @@
 package com.kalin.jobseekers.data.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -35,6 +36,7 @@ public class Offer extends BaseEntity {
 
 
     public Offer() {
+        this.setUsersFav(new ArrayList<>());
         this.setImages(new ArrayList<>());
     }
 

@@ -1,10 +1,12 @@
 package com.kalin.jobseekers.data.repositories;
 
+import com.kalin.jobseekers.data.models.Offer;
 import com.kalin.jobseekers.data.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository

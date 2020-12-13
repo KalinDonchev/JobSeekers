@@ -18,7 +18,11 @@ public interface OfferService {
 
     List<OfferInfoViewModel> getAll();
 
+    List<OfferInfoViewModel> getLatestOffers(Long number);
+
     List<OfferInfoViewModel> getAllByCreator(String username);
+
+    List<OfferInfoViewModel> getFavOffersForUser(String username);
 
     void delete(DeleteOfferRequest deleteRequest);
 

@@ -16,4 +16,6 @@ public interface OfferRepository extends JpaRepository<Offer, String> {
 
     List<Offer> findAllByUserUsername(String username);
 
+    List<Offer> findTop3ByOrderByIdDesc();
+
 }

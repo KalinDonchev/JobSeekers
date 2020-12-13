@@ -48,6 +48,16 @@ public class OfferController {
         return ok(all);
     }
 
+    @GetMapping("/all?limit={limit}")
+    @Transactional
+    public ResponseEntity<?> getLatestOffers(@PathVariable Long limit) {
+
+        // REFACTOR WITH MODELS !!!!!!! AND OPTIMIZE !!!!!
+        List<OfferInfoViewModel> all = this.offerService.getAll();
+        return ok(all);
+    }
+
+
 
     @GetMapping("/details/{id}")
     @Transactional
@@ -69,6 +79,13 @@ public class OfferController {
     public ResponseEntity<?> getByCreator(@PathVariable String username) {
         return ok(this.offerService.getAllByCreator(username));
     }
+
+    @GetMapping("/favourite-offers/{username}")
+    public ResponseEntity<?> getFavOffersForUser(@PathVariable String username) {
+        return ok(this.offerService.getFavOffersForUser(username));
+    }
+
+
 
 
 

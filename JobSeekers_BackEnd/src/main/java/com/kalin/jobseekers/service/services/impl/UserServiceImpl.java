@@ -7,6 +7,7 @@ import com.kalin.jobseekers.data.repositories.UserRepository;
 import com.kalin.jobseekers.service.models.OfferServiceModel;
 import com.kalin.jobseekers.service.models.UserServiceModel;
 import com.kalin.jobseekers.service.services.UserService;
+import com.kalin.jobseekers.web.models.UserDetailsViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -33,15 +34,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public UserServiceModel getUserByUsername(String username) {
+    public UserDetailsViewModel getUserByUsername(String username) {
 
         User user = this.userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+        UserDetailsViewModel model = this.modelMapper.map(user, UserDetailsViewModel.class);
+        model.setNumberOfOffers((long) user.getOffers().size());
 
-        return this.modelMapper.map(user, UserServiceModel.class);
+        return model;
     }
 
     @Override
+    @Transactional
     public OfferServiceModel addOfferToFavourites(String offerId, String username) {
         User user = this.userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
