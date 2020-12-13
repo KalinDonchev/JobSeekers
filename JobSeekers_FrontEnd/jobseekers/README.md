@@ -4,6 +4,8 @@ JobSeekers is an freelance application built on Angular and Spring as a project 
 
 The application has three levels of accessibility: guest user, admin and registered user
 
+This is the FrontEnd part of the project.
+
 ## Routes
 | Route  | Description | Access Level |
 | ------------- | ------------- | ------------- |
