@@ -1,27 +1,89 @@
-# Jobseekers
+# JobSeekers - platform for freelancers to offer their skills to the world and users finding the perfect employee for their task
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+JobSeekers is an freelance application built on Angular and Spring as a project for the SoftUni Angular Course. It's purpose is to find your required person to do your task or to offer your help(work) to someone. Css code is written by me. Angular Material is used only for some components. Validation is included.
 
-## Development server
+The application has three levels of accessibility: guest user, admin and registered user
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Routes
+| Route  | Description | Access Level |
+| ------------- | ------------- | ------------- |
+| /  | Home Page  | The home page changes dynamically dependig on logged in status | All users and Guest Users |
+| /auth/login  | Login Page  | Guests only |
+| /auth/register  | Register Page  | Guests only |
+| /offer/create/  | Page for creating offer  | Registered only |
+| /offer/details/:id  | Page for looking offer's details  | Registered only |
+| /offer/my-offers/:username  | Current user's offers  | Registered only |
+| /offer/favourite-offers/:username  | Current user's favourite offers  | Registered only |
+| /user/profile/:username  | Page for user's details page  | Registered only |
+    
+The already logged in user is authenticated to create offers , delete his own offers , add other user's offers to favourites. He can see other users details on the offer details page and contact the user if interested.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Usage
 
-## Build
+**Home page**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+route: '/'
 
-## Running unit tests
+A Welcome page or Home page depending on logged in status.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Offers create page**
 
-## Running end-to-end tests
+route: '/offer/create'
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Page for creating an offer.
 
-## Further help
+**Single offer details page**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+route: '/offer/details/:id'
+
+A page displaying the selected offer's details.
+
+**Favourite offers page**
+
+route: '/offer/favourite-offers/:username'
+
+A page displaying all offers that the user has in his favourite list.
+
+**All offers page**
+
+route: '/offer/my-offers/:username'
+
+A page displaying all created offers of current user.
+
+**User profile page**
+
+route: '/user/profile/:username'
+
+A page where you can see your details if you are logged in.
+
+
+**Login page**
+
+route: '/auth/login'
+
+Login Page.
+
+**Register page**
+
+route: '/auth/register'
+
+Register Page.
+
+## Run the application
+
+Install Angular if needed.
+
+Download the code from github, extract the zip file with WinRar or other PAID software. For both folders you have to open terminal and write: 
+
+    npm install
+
+Open the application in an editor (VS Code for example) 
+    
+To start the Back-End part, you have to download it from the other folder (JobSeekers_BackEnd) and configure it :)
+
+    It is running on http://localhost:8080
+   
+The last thing you have to do is to write this command to start the Front-End part and the site will appear on the browser:
+
+    ng serve --open or ng serve. The website will wait you on http://localhost:4200

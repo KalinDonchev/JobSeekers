@@ -13,13 +13,13 @@ export class HomeComponent implements OnInit {
 
   images = [
     {
-        path: 'https://res.cloudinary.com/kalindonchev-cloud/image/upload/v1606763464/kjojbprq4q1jhdtb20wc.jpg',
+        path: 'https://res.cloudinary.com/kalindonchev-cloud/image/upload/v1607854505/ir2ymv0iwcn7ww8fddvv.jpg',
     },
     {
-        path: 'https://res.cloudinary.com/kalindonchev-cloud/image/upload/v1607515821/f7aavnoyivslhdtb7v2z.jpg',
+        path: 'https://res.cloudinary.com/kalindonchev-cloud/image/upload/v1607854509/mjyidy43lcup4giqh3ke.jpg',
     },
     {
-        path: 'https://res.cloudinary.com/kalindonchev-cloud/image/upload/v1607515821/f7aavnoyivslhdtb7v2z.jpg',
+        path: 'https://res.cloudinary.com/kalindonchev-cloud/image/upload/v1607854514/xth2awefpgcrhq7t7eoj.jpg',
     }
   ]
 
